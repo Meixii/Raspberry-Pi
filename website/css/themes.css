@@ -1,0 +1,197 @@
+/* Theme Variables */
+:root {
+    /* Light Theme (Default) */
+    --light-background: #FFFFFF;
+    --light-surface: #F5F5F5;
+    --light-surface-variant: #E0E0E0;
+    --light-primary: #007AFF;
+    --light-secondary: #5856D6;
+    --light-error: #FF3B30;
+    --light-success: #34C759;
+    --light-warning: #FF9500;
+    --light-text-primary: #000000;
+    --light-text-secondary: #666666;
+    --light-border: #E0E0E0;
+    --light-hover: #F0F0F0;
+    --light-input-background: #FFFFFF;
+
+    /* Dark Theme */
+    --dark-background: #000000;
+    --dark-surface: #1C1C1E;
+    --dark-surface-variant: #2C2C2E;
+    --dark-primary: #0A84FF;
+    --dark-secondary: #5E5CE6;
+    --dark-error: #FF453A;
+    --dark-success: #30D158;
+    --dark-warning: #FF9F0A;
+    --dark-text-primary: #FFFFFF;
+    --dark-text-secondary: #EBEBF5;
+    --dark-border: #38383A;
+    --dark-hover: #2C2C2E;
+    --dark-input-background: #1C1C1E;
+
+    /* Night Theme */
+    --night-background: #1C1C1E;
+    --night-surface: #2C2C2E;
+    --night-surface-variant: #3A3A3C;
+    --night-primary: #0A84FF;
+    --night-secondary: #5E5CE6;
+    --night-error: #FF453A;
+    --night-success: #30D158;
+    --night-warning: #FF9F0A;
+    --night-text-primary: #E5E5E7;
+    --night-text-secondary: #98989D;
+    --night-border: #48484A;
+    --night-hover: #3A3A3C;
+    --night-input-background: #2C2C2E;
+}
+
+/* Light Theme */
+.theme-light {
+    --background: var(--light-background);
+    --surface: var(--light-surface);
+    --surface-variant: var(--light-surface-variant);
+    --primary: var(--light-primary);
+    --secondary: var(--light-secondary);
+    --error: var(--light-error);
+    --success: var(--light-success);
+    --warning: var(--light-warning);
+    --text-primary: var(--light-text-primary);
+    --text-secondary: var(--light-text-secondary);
+    --border: var(--light-border);
+    --hover: var(--light-hover);
+    --input-background: var(--light-input-background);
+}
+
+/* Dark Theme */
+.theme-dark {
+    --background: var(--dark-background);
+    --surface: var(--dark-surface);
+    --surface-variant: var(--dark-surface-variant);
+    --primary: var(--dark-primary);
+    --secondary: var(--dark-secondary);
+    --error: var(--dark-error);
+    --success: var(--dark-success);
+    --warning: var(--dark-warning);
+    --text-primary: var(--dark-text-primary);
+    --text-secondary: var(--dark-text-secondary);
+    --border: var(--dark-border);
+    --hover: var(--dark-hover);
+    --input-background: var(--dark-input-background);
+}
+
+/* Night Theme */
+.theme-night {
+    --background: var(--night-background);
+    --surface: var(--night-surface);
+    --surface-variant: var(--night-surface-variant);
+    --primary: var(--night-primary);
+    --secondary: var(--night-secondary);
+    --error: var(--night-error);
+    --success: var(--night-success);
+    --warning: var(--night-warning);
+    --text-primary: var(--night-text-primary);
+    --text-secondary: var(--night-text-secondary);
+    --border: var(--night-border);
+    --hover: var(--night-hover);
+    --input-background: var(--night-input-background);
+}
+
+/* Theme Preview Cards */
+.theme-preview.light {
+    background: var(--light-background);
+    border: 1px solid var(--light-border);
+    position: relative;
+}
+
+.theme-preview.light::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 60%;
+    height: 20px;
+    background: var(--light-primary);
+    border-radius: 4px;
+}
+
+.theme-preview.light::after {
+    content: '';
+    position: absolute;
+    top: 60px;
+    left: 20px;
+    width: 40%;
+    height: 20px;
+    background: var(--light-surface-variant);
+    border-radius: 4px;
+}
+
+.theme-preview.dark {
+    background: var(--dark-background);
+    border: 1px solid var(--dark-border);
+    position: relative;
+}
+
+.theme-preview.dark::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 60%;
+    height: 20px;
+    background: var(--dark-primary);
+    border-radius: 4px;
+}
+
+.theme-preview.dark::after {
+    content: '';
+    position: absolute;
+    top: 60px;
+    left: 20px;
+    width: 40%;
+    height: 20px;
+    background: var(--dark-surface-variant);
+    border-radius: 4px;
+}
+
+.theme-preview.night {
+    background: var(--night-background);
+    border: 1px solid var(--night-border);
+    position: relative;
+}
+
+.theme-preview.night::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 60%;
+    height: 20px;
+    background: var(--night-primary);
+    border-radius: 4px;
+}
+
+.theme-preview.night::after {
+    content: '';
+    position: absolute;
+    top: 60px;
+    left: 20px;
+    width: 40%;
+    height: 20px;
+    background: var(--night-surface-variant);
+    border-radius: 4px;
+}
+
+/* Theme Transitions */
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+button,
+input,
+select,
+.theme-card,
+.sound-item,
+.pattern-card {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+} 

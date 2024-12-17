@@ -1,0 +1,878 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    overflow: hidden;
+}
+
+/* Screen Management */
+.screen {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+}
+
+.screen.active {
+    display: flex;
+}
+
+/* Login Screen */
+#login-screen {
+    justify-content: center;
+    align-items: center;
+    background: var(--background);
+}
+
+.login-container {
+    text-align: center;
+    padding: 2rem;
+    border-radius: 8px;
+    background: var(--surface);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.login-container h1 {
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.login-container p {
+    margin-bottom: 2rem;
+    color: var(--text-secondary);
+}
+
+/* Development Bypass Button - Removed from index */
+.dev-bypass {
+    display: none;
+}
+
+/* But show it in auth page */
+.auth-form .dev-bypass {
+    display: block;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+}
+
+.bypass-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.75rem;
+    background: var(--warning);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.bypass-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.bypass-btn i {
+    font-size: 1.2rem;
+}
+
+/* Main App Layout */
+#app-screen {
+    display: none;
+    flex-direction: row;
+}
+
+#app-screen.active {
+    display: flex;
+}
+
+/* Sidebar Navigation */
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background: var(--surface);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid var(--border);
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+}
+
+#user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 1rem;
+}
+
+#user-name {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.nav-links {
+    list-style: none;
+    flex-grow: 1;
+}
+
+.nav-links li {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    margin: 0.25rem 0;
+    border-radius: 4px;
+    cursor: pointer;
+    color: var(--text-secondary);
+    transition: all 0.3s ease;
+}
+
+.nav-links li:hover {
+    background: var(--hover);
+    color: var(--text-primary);
+}
+
+.nav-links li.active {
+    background: var(--primary);
+    color: white;
+}
+
+.nav-links li i {
+    margin-right: 1rem;
+}
+
+.nav-footer {
+    padding: 1rem;
+    border-top: 1px solid var(--border);
+}
+
+#logout-btn {
+    width: 100%;
+    padding: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 4px;
+    background: var(--error);
+    color: white;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+#logout-btn:hover {
+    opacity: 0.9;
+}
+
+#logout-btn i {
+    margin-right: 0.5rem;
+}
+
+/* Main Content Area */
+.content {
+    flex-grow: 1;
+    padding: 2rem;
+    background: var(--background);
+    overflow-y: auto;
+}
+
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+/* Page Headers */
+.page h2 {
+    margin-bottom: 2rem;
+    color: var(--text-primary);
+}
+
+/* Floating Action Button */
+.fab {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.fab:hover {
+    transform: scale(1.1);
+}
+
+/* Modal Styles */
+.modal-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-container.active {
+    display: flex;
+}
+
+.modal {
+    background: var(--surface);
+    border-radius: 8px;
+    padding: 2rem;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.modal h3 {
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+}
+
+.form-group input[type="text"],
+.form-group input[type="time"],
+.form-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: var(--input-background);
+    color: var(--text-primary);
+}
+
+.day-selector {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.day-selector label {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: var(--text-primary);
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.form-actions button {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: opacity 0.3s ease;
+}
+
+.cancel-btn {
+    background: var(--surface-variant);
+    color: var(--text-primary);
+}
+
+.save-btn {
+    background: var(--primary);
+    color: white;
+}
+
+.form-actions button:hover {
+    opacity: 0.9;
+}
+
+/* Theme Cards */
+.theme-presets {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.theme-card {
+    padding: 1rem;
+    border-radius: 8px;
+    background: var(--surface);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.theme-card:hover {
+    transform: translateY(-4px);
+}
+
+.theme-preview {
+    height: 120px;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+/* Sound List */
+.sound-list {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.sound-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background: var(--surface);
+    border-radius: 4px;
+}
+
+.sound-item .play-btn {
+    margin-right: 1rem;
+    background: none;
+    border: none;
+    color: var(--primary);
+    cursor: pointer;
+}
+
+/* Light Patterns */
+.light-patterns {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.pattern-card {
+    padding: 1rem;
+    border-radius: 4px;
+    background: var(--surface);
+    cursor: pointer;
+    text-align: center;
+}
+
+.pattern-preview {
+    height: 80px;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+/* Settings Form */
+.settings-form {
+    max-width: 600px;
+}
+
+.setting-group {
+    margin-bottom: 2rem;
+}
+
+.setting-group h3 {
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #app-screen {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .nav-links {
+        display: flex;
+        overflow-x: auto;
+        padding-bottom: 1rem;
+    }
+
+    .nav-links li {
+        flex-shrink: 0;
+    }
+
+    .content {
+        height: calc(100vh - 80px);
+    }
+
+    .theme-presets {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+} 
+
+/* Authentication Page Styles */
+.auth-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--background);
+    padding: 2rem;
+}
+
+.auth-forms {
+    width: 100%;
+    max-width: 400px;
+    background: var(--surface);
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    padding: 2rem;
+}
+
+.auth-form {
+    background: var(--surface-color);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    margin: 2rem auto;
+}
+
+.auth-form h2 {
+    color: var(--text-primary);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.auth-form .social-login {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+/* Error Message */
+.error-message {
+    color: var(--error-color);
+    background-color: var(--error-bg);
+    padding: 0.5rem;
+    border-radius: 4px;
+    margin: 1rem 0;
+    display: none;
+}
+
+.auth-form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.auth-form label {
+    display: block;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.auth-form input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: var(--input-background);
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+}
+
+.auth-form input:focus {
+    border-color: var(--primary);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 122, 255, 0.1);
+}
+
+.auth-form .form-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.auth-form .btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.auth-form .btn-primary {
+    background: var(--primary);
+    color: white;
+    min-width: 120px;
+}
+
+.auth-form .btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.auth-form a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+    font-weight: 500;
+}
+
+.auth-form a:hover {
+    opacity: 0.8;
+}
+
+.auth-toggle {
+    text-align: center;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-primary);
+}
+
+.auth-toggle a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 0.5rem;
+}
+
+.social-login {
+    margin-top: 2rem;
+    text-align: center;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+}
+
+/* Alarms Page */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.page-header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.fab {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.fab:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.fab i {
+    font-size: 24px;
+}
+
+/* Modal */
+.modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-container.active {
+    display: flex;
+}
+
+.modal {
+    background: var(--surface);
+    border-radius: 8px;
+    padding: 1.5rem;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.modal h2 {
+    margin: 0 0 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+}
+
+.form-group input[type="time"],
+.form-group input[type="text"],
+.form-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: var(--surface);
+    color: var(--text-primary);
+    font-size: 1rem;
+}
+
+.day-selector {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: space-between;
+    padding: 0.5rem;
+    background: var(--surface-variant);
+    border-radius: 4px;
+}
+
+.day-selector label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    cursor: pointer;
+}
+
+.day-selector input[type="checkbox"] {
+    margin: 0.25rem;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.form-actions button {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cancel-btn {
+    background: var(--surface-variant);
+    color: var(--text-primary);
+}
+
+.save-btn {
+    background: var(--primary);
+    color: white;
+}
+
+.cancel-btn:hover {
+    background: var(--hover);
+}
+
+.save-btn:hover {
+    background: var(--primary-dark);
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+    .modal {
+        background: var(--surface-dark);
+    }
+    
+    .form-group input[type="time"],
+    .form-group input[type="text"],
+    .form-group select {
+        background: var(--surface-dark);
+        border-color: var(--border-dark);
+    }
+    
+    .day-selector {
+        background: var(--surface-variant-dark);
+    }
+}
+
+/* Device Registration Styles */
+.register-page {
+    background-color: var(--background);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.register-container {
+    background-color: var(--surface);
+    border-radius: 12px;
+    padding: 2rem;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.register-container h1 {
+    color: var(--text-primary);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.registration-steps {
+    position: relative;
+}
+
+.step {
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.step.hidden {
+    display: none;
+    opacity: 0;
+}
+
+.step h2 {
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.step p {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+#qrcode-container {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+#qrcode {
+    display: inline-block;
+    padding: 1rem;
+    background: white;
+    border-radius: 8px;
+}
+
+.verification-input {
+    display: flex;
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.verification-input input {
+    flex: 1;
+    padding: 0.75rem;
+    font-size: 1.2rem;
+    text-align: center;
+    letter-spacing: 0.2rem;
+    border: 2px solid var(--border);
+    border-radius: 6px;
+    background: var(--input-background);
+    color: var(--text-primary);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid var(--border);
+    border-radius: 6px;
+    background: var(--input-background);
+    color: var(--text-primary);
+}
+
+.success-message {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.success-icon {
+    font-size: 4rem;
+    color: var(--success);
+    margin-bottom: 1rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn.primary {
+    background-color: var(--primary);
+    color: white;
+}
+
+.btn.primary:hover {
+    background-color: var(--primary-dark);
+}
+  

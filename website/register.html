@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Alarm - Device Registration</title>
+    <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/qr-scanner/qr-scanner.umd.min.js"></script>
+</head>
+<body class="register-page">
+    <div class="container">
+        <div class="register-container">
+            <h1>Device Registration</h1>
+            <div class="registration-steps">
+                <div class="step" id="step1">
+                    <h2>Step 1: Connect Your Device</h2>
+                    <p>You can either scan the QR code from your device or enter the device ID manually.</p>
+                    
+                    <div class="registration-methods">
+                        <div class="qr-method">
+                            <h3>Option 1: Scan QR Code</h3>
+                            <button id="startScan" class="btn primary">
+                                <i class="material-icons">qr_code_scanner</i>
+                                Start QR Scanner
+                            </button>
+                            <div id="scanner-container" class="hidden">
+                                <video id="qr-video"></video>
+                            </div>
+                        </div>
+
+                        <div class="manual-method">
+                            <h3>Option 2: Enter Device ID</h3>
+                            <div class="form-group">
+                                <input type="text" id="deviceId" placeholder="Enter Device ID (e.g., 0671dfd)" maxlength="7">
+                                <button id="submitDeviceId" class="btn primary">Connect Device</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step hidden" id="step2">
+                    <h2>Step 2: Device Setup</h2>
+                    <form id="deviceSetupForm">
+                        <div class="form-group">
+                            <label for="deviceName">Device Name</label>
+                            <input type="text" id="deviceName" required placeholder="e.g., Bedroom Alarm">
+                        </div>
+                        <div class="form-group">
+                            <label for="timezone">Time Zone</label>
+                            <select id="timezone" required></select>
+                        </div>
+                        <div class="form-group">
+                            <label for="location">Location</label>
+                            <input type="text" id="location" required placeholder="City, Country">
+                        </div>
+                        <button type="submit" class="btn primary">Complete Setup</button>
+                    </form>
+                </div>
+
+                <div class="step hidden" id="success">
+                    <h2>Registration Complete!</h2>
+                    <div class="success-message">
+                        <i class="material-icons success-icon">check_circle</i>
+                        <p>Your device has been successfully registered.</p>
+                    </div>
+                    <a href="index.html" class="btn primary">Go to Dashboard</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/register.js"></script>
+</body>
+</html> 

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Alarm Configuration</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/themes.css">
+    
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="theme-dark">
+    <!-- Main App Screen -->
+    <div id="app-screen" class="screen active">
+        <!-- Navigation -->
+        <nav class="sidebar">
+            <div class="user-info">
+                <img id="user-avatar" src="" alt="User Avatar">
+                <span id="user-name"></span>
+            </div>
+            <ul class="nav-links">
+                <li class="active" data-page="alarms">
+                    <i class="material-icons">alarm</i>
+                    Alarms
+                </li>
+                <li data-page="calendar">
+                    <i class="material-icons">calendar_today</i>
+                    Calendar
+                </li>
+                <li data-page="weather">
+                    <i class="material-icons">cloud</i>
+                    Weather
+                </li>
+                <li data-page="sounds">
+                    <i class="material-icons">music_note</i>
+                    Sounds
+                </li>
+                <li data-page="lights">
+                    <i class="material-icons">lightbulb</i>
+                    Lights
+                </li>
+                <li data-page="settings">
+                    <i class="material-icons">settings</i>
+                    Settings
+                </li>
+                <li onclick="window.location.href='register.html'">
+                    <i class="material-icons">devices</i>
+                    Register Device
+                </li>
+            </ul>
+            <div class="nav-footer">
+                <button id="logout-btn">
+                    <i class="material-icons">logout</i>
+                    <span>Logout</span>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="content">
+            <!-- Alarms Page -->
+            <div id="alarms-page" class="page active">
+                <div class="page-header">
+                    <h1>Alarms</h1>
+                    <button id="add-alarm-btn" class="fab">
+                        <i class="material-icons">add</i>
+                    </button>
+                </div>
+                <div class="alarm-list">
+                    <!-- Alarms will be rendered here by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Calendar Page -->
+            <div id="calendar-page" class="page">
+                <h2>Calendar</h2>
+                <div id="calendar-container"></div>
+            </div>
+
+            <!-- Weather Page -->
+            <div id="weather-page" class="page">
+                <h2>Weather Configuration</h2>
+                <div class="weather-settings">
+                    <div class="current-weather"></div>
+                    <div class="forecast"></div>
+                    <div class="weather-alerts"></div>
+                </div>
+            </div>
+
+            <!-- Themes Page -->
+            <div id="themes-page" class="page">
+                <h2>Theme Settings</h2>
+                <div class="theme-presets">
+                    <div class="theme-card" data-theme="dark">
+                        <div class="theme-preview dark"></div>
+                        <span>Dark Theme</span>
+                    </div>
+                    <div class="theme-card" data-theme="light">
+                        <div class="theme-preview light"></div>
+                        <span>Light Theme</span>
+                    </div>
+                    <div class="theme-card" data-theme="night">
+                        <div class="theme-preview night"></div>
+                        <span>Night Theme</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sounds Page -->
+            <div id="sounds-page" class="page">
+                <h2>Sound Settings</h2>
+                <div class="sound-list">
+                    <!-- Sound items will be populated dynamically -->
+                </div>
+                <div class="sound-upload">
+                    <h3>Upload Custom Sound</h3>
+                    <input type="file" id="sound-upload" accept="audio/mp3">
+                </div>
+            </div>
+
+            <!-- RGB Lights Page -->
+            <div id="lights-page" class="page">
+                <h2>RGB Light Settings</h2>
+                <div class="light-patterns">
+                    <!-- Light patterns will be populated dynamically -->
+                </div>
+                <div class="custom-pattern">
+                    <h3>Custom Pattern</h3>
+                    <div class="color-picker"></div>
+                </div>
+            </div>
+
+            <!-- Settings Page -->
+            <div id="settings-page" class="page">
+                <h2>Settings</h2>
+                <div class="settings-form">
+                    <div class="setting-group">
+                        <h3>Time Format</h3>
+                        <select id="time-format">
+                            <option value="12h">12-hour</option>
+                            <option value="24h">24-hour</option>
+                        </select>
+                    </div>
+                    <div class="setting-group">
+                        <h3>Date Format</h3>
+                        <select id="date-format">
+                            <option value="iso">YYYY-MM-DD</option>
+                            <option value="us">MM/DD/YYYY</option>
+                            <option value="uk">DD/MM/YYYY</option>
+                            <option value="full">Month DD, YYYY</option>
+                        </select>
+                    </div>
+                    <div class="setting-group">
+                        <h3>Temperature Unit</h3>
+                        <select id="temp-unit">
+                            <option value="C">Celsius</option>
+                            <option value="F">Fahrenheit</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal Templates -->
+    <div id="modal-container" class="modal-container">
+        <div class="modal">
+            <h2>Add Alarm</h2>
+            <form id="add-alarm-form">
+                <div class="form-group">
+                    <label for="alarm-time">Time</label>
+                    <input type="time" id="alarm-time" name="alarm-time" required>
+                </div>
+                <div class="form-group">
+                    <label for="alarm-title">Title</label>
+                    <input type="text" id="alarm-title" name="alarm-title" placeholder="Wake up">
+                </div>
+                <div class="form-group">
+                    <label>Repeat</label>
+                    <div class="day-selector">
+                        <label><input type="checkbox" value="sun">S</label>
+                        <label><input type="checkbox" value="mon">M</label>
+                        <label><input type="checkbox" value="tue">T</label>
+                        <label><input type="checkbox" value="wed">W</label>
+                        <label><input type="checkbox" value="thu">T</label>
+                        <label><input type="checkbox" value="fri">F</label>
+                        <label><input type="checkbox" value="sat">S</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="alarm-sound">Sound</label>
+                    <select id="alarm-sound" name="alarm-sound">
+                        <option value="digital.mp3">Digital</option>
+                        <option value="morning-dew.mp3">Morning Dew</option>
+                        <option value="gentle-chime.mp3">Gentle Chime</option>
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="cancel-btn">Cancel</button>
+                    <button type="submit" class="save-btn">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/app.js"></script>
+    <script src="js/alarms.js"></script>
+    <script src="js/calendar.js"></script>
+    <script src="js/weather.js"></script>
+    <script src="js/themes.js"></script>
+    <script src="js/sounds.js"></script>
+    <script src="js/lights.js"></script>
+    <script src="js/settings.js"></script>
+</body>
+</html> 
